@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Bible Reading Tracker - Free Printables in English and Tamil, thoughtfully designed to encourage Bible reading.">
   <title>Bible Reading Tracker - Free Printables</title>
+  <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
 
   <style>
     :root{
@@ -531,6 +532,26 @@
   <p class="credit">
     Praise be to the Lord Jesus Christ.
   </p>
+  <p class="credit" id="visit-counter">
+  Total visits: <span id="visit-count">Loading...</span>
+</p>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const counter = new Counter({
+      workspace: "g-ss-team"
+    });
+
+    counter.up("visits")
+      .then(result => {
+        document.getElementById("visit-count").textContent = result.value;
+      })
+      .catch(error => {
+        console.error("Visit counter error:", error);
+        document.getElementById("visit-count").textContent = "—";
+      });
+  });
+</script>
 </footer>
 
 </body>
