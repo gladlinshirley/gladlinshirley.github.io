@@ -1,537 +1,844 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bible Reading Tracker - Free Printables in English and Tamil, thoughtfully designed to encourage Bible reading.">
-  <title>Bible Reading Tracker - Free Printables</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --pink:#d9a6ad;
-      --pink-soft:#f8e9ec;
-      --blue:#a9c8dc;
-      --blue-soft:#edf5fa;
-      --ink:#3f4650;
-      --muted:#69727c;
-      --cream:#fffdfb;
-      --white:#ffffff;
-      --line:#e7dfe1;
-      --shadow:0 10px 30px rgba(73,78,87,.09);
-      --radius:22px;
-    }
+<meta name="description" content="Free Bible reading trackers and printables in English and Tamil, thoughtfully designed to encourage Bible reading among children, young people and families.">
 
-    *{box-sizing:border-box}
+<title>Bible Reading Tracker - Free Printables</title>
 
-    html{scroll-behavior:smooth}
+<!-- CounterAPI -->
+<script async src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
 
-    body{
-      margin:0;
-      font-family:Georgia,"Times New Roman",serif;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 8% 8%,rgba(217,166,173,.18),transparent 24%),
-        radial-gradient(circle at 92% 15%,rgba(169,200,220,.22),transparent 25%),
-        var(--cream);
-      line-height:1.65;
-    }
+<style>
+:root{
+--pink:#d9a6ad;
+--pink-soft:#f8e9ec;
+--blue:#a9c8dc;
+--blue-soft:#edf5fa;
+--ink:#3f4650;
+--muted:#69727c;
+--cream:#fffdfb;
+--white:#ffffff;
+--line:#e7dfe1;
+--shadow:0 10px 30px rgba(73,78,87,.09);
+--radius:22px;
+}
 
-    a{color:inherit}
+*{box-sizing:border-box}
 
-    .wrap{
-      width:min(1100px,calc(100% - 32px));
-      margin:auto;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    header{
-      padding:54px 0 35px;
-      text-align:center;
-    }
+body{
+margin:0;
+font-family:Georgia, "Times New Roman", serif;
+color:var(--ink);
+background:
+radial-gradient(circle at 8% 8%, rgba(217,166,173,.18), transparent 24%),
+radial-gradient(circle at 92% 15%, rgba(169,200,220,.22), transparent 25%),
+var(--cream);
+line-height:1.65;
+}
 
-    .cross{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:42px;
-      height:42px;
-      margin-bottom:14px;
-      color:#8e9fb0;
-      font-size:32px;
-      font-family:Arial,sans-serif;
-    }
+a{
+color:inherit;
+}
 
-    h1{
-      margin:0;
-      font-size:clamp(2rem,5vw,3.35rem);
-      font-weight:500;
-      letter-spacing:.01em;
-    }
+.wrap{
+width:min(1100px, calc(100% - 32px));
+margin:auto;
+}
 
-    .ornament{
-      width:100px;
-      height:2px;
-      background:linear-gradient(90deg,transparent,var(--pink),var(--blue),transparent);
-      margin:18px auto 17px;
-      position:relative;
-    }
+header{
+padding:54px 0 35px;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
 
-    .ornament:after{
-      content:"✿";
-      position:absolute;
-      left:50%;
-      top:-15px;
-      transform:translateX(-50%);
-      background:var(--cream);
-      padding:0 8px;
-      color:#9daebc;
-      font-size:18px;
-    }
+.cross{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:42px;
+height:42px;
+margin-bottom:14px;
+color:#8e9fb0;
+font-size:34px;
+font-family:Arial, sans-serif;
+line-height:1;
+}
 
-    .subtitle{
-      max-width:720px;
-      margin:0 auto;
-      color:var(--muted);
-      font-size:1.08rem;
-    }
+h1{
+margin:0;
+font-size:clamp(2rem, 5vw, 3.35rem);
+font-weight:500;
+letter-spacing:.01em;
+}
 
-    nav{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:24px;
-    }
+.ornament{
+width:100px;
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+var(--pink),
+var(--blue),
+transparent
+);
+margin:18px auto 17px;
+position:relative;
+}
 
-    nav a{
-      text-decoration:none;
-      padding:8px 16px;
-      border-radius:999px;
-      background:rgba(255,255,255,.75);
-      border:1px solid var(--line);
-      font-size:.9rem;
-      transition:.2s ease;
-    }
+.ornament:after{
+content:"✿";
+position:absolute;
+left:50%;
+top:-15px;
+transform:translateX(-50%);
+background:var(--cream);
+padding:0 8px;
+color:#9daebc;
+font-size:18px;
+}
 
-    nav a:hover{
-      background:var(--pink-soft);
-      transform:translateY(-1px);
-    }
+.subtitle{
+max-width:700px;
+margin:0 auto;
+color:var(--muted);
+font-size:1.08rem;
+}
 
-    .intro{
-      background:rgba(255,255,255,.8);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
-      padding:30px clamp(22px,5vw,50px);
-      margin:18px auto 45px;
-      max-width:930px;
-      text-align:center;
-    }
+nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+margin-top:24px;
+}
 
-    .intro h2{
-      margin:0 0 10px;
-      font-size:1.55rem;
-      font-weight:500;
-    }
+nav a{
+text-decoration:none;
+padding:8px 16px;
+border-radius:999px;
+background:rgba(255,255,255,.75);
+border:1px solid var(--line);
+font-size:.9rem;
+transition:.2s ease;
+}
 
-    .intro p{
-      margin:10px auto;
-      max-width:820px;
-    }
+nav a:hover{
+background:var(--pink-soft);
+transform:translateY(-1px);
+}
 
-    .quote{
-      text-align:center;
-      margin:10px auto 35px;
-      max-width:750px;
-      padding:26px 25px;
-      border-left:3px solid var(--pink);
-      border-right:3px solid var(--blue);
-      background:rgba(255,255,255,.65);
-      border-radius:16px;
-      font-style:italic;
-      color:#5a626b;
-    }
+.intro{
+background:rgba(255,255,255,.8);
+border:1px solid var(--line);
+box-shadow:var(--shadow);
+border-radius:var(--radius);
+padding:30px clamp(22px, 5vw, 50px);
+margin:18px auto 45px;
+max-width:930px;
+text-align:center;
+}
 
-    footer{
-      margin-top:15px;
-      padding:42px 0 35px;
-      background:linear-gradient(135deg,#f8e9ec,#edf5fa);
-      text-align:center;
-      border-top:1px solid var(--line);
-    }
+.intro h2{
+margin:0 0 10px;
+font-size:1.55rem;
+font-weight:500;
+}
 
-    footer .made{
-      font-size:1.05rem;
-      margin:0 0 8px;
-    }
+.intro p{
+margin:10px auto;
+max-width:800px;
+}
 
-    footer .credit{
-      margin:0;
-      color:#727b84;
-      font-size:.86rem;
-    }
+.highlight{
+display:inline-block;
+margin-top:12px;
+padding:7px 14px;
+border-radius:999px;
+background:linear-gradient(
+90deg,
+var(--pink-soft),
+var(--blue-soft)
+);
+color:#58636e;
+font-size:.92rem;
+}
 
-    .small-cross{
-      color:#8ea3b4;
-      font-family:Arial,sans-serif;
-      font-size:22px;
-      margin-bottom:8px;
-    }
+.plants{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:9px;
+margin:18px 0 0;
+}
 
-    @media (max-width:700px){
-      header{padding:35px 0 25px}
+.plant{
+padding:7px 12px;
+background:white;
+border:1px solid var(--line);
+border-radius:999px;
+font-size:.83rem;
+color:#68727b;
+}
 
-      .wrap{
-        width:min(100% - 22px,1100px);
-      }
+section{
+padding:18px 0 45px;
+}
 
-      .grid{
-        grid-template-columns:1fr;
-        gap:15px;
-      }
+.section-heading{
+text-align:center;
+margin-bottom:25px;
+}
 
-      .intro{
-        padding:24px 18px;
-        margin-bottom:30px;
-      }
+.section-heading h2{
+margin:0;
+font-size:1.8rem;
+font-weight:500;
+}
 
-      .card{
-        padding:14px;
-      }
+.section-heading p{
+margin:5px 0 0;
+color:var(--muted);
+}
 
-      .preview{
-        border-radius:13px;
-      }
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:18px;
+}
 
-      .section-heading h2{
-        font-size:1.55rem;
-      }
+.card{
+background:rgba(255,255,255,.92);
+border:1px solid var(--line);
+border-radius:var(--radius);
+padding:22px;
+box-shadow:0 7px 22px rgba(73,78,87,.06);
+display:flex;
+flex-direction:column;
+min-height:205px;
+}
 
-      .subtitle{
-        font-size:1rem;
-      }
+.card:nth-child(odd){
+border-top:4px solid var(--pink);
+}
 
-      nav a{
-        font-size:.82rem;
-        padding:7px 12px;
-      }
+.card:nth-child(even){
+border-top:4px solid var(--blue);
+}
 
-      .quote{
-        font-size:.95rem;
-      }
-    }
-  </style>
+.card-top{
+display:flex;
+gap:13px;
+align-items:flex-start;
+}
+
+.icon{
+flex:0 0 38px;
+height:38px;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:Arial,sans-serif;
+font-size:19px;
+background:var(--pink-soft);
+color:#a6757e;
+}
+
+.card:nth-child(even) .icon{
+background:var(--blue-soft);
+color:#668ba5;
+}
+
+.card h3{
+margin:1px 0 4px;
+font-size:1.18rem;
+font-weight:600;
+}
+
+.card p{
+margin:0;
+color:var(--muted);
+font-size:.93rem;
+}
+
+.button{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+align-self:flex-start;
+margin-top:auto;
+padding:9px 17px;
+border-radius:999px;
+text-decoration:none;
+background:var(--ink);
+color:white;
+font-family:Arial,sans-serif;
+font-size:.86rem;
+transition:.2s ease;
+}
+
+.button:hover{
+transform:translateY(-2px);
+opacity:.92;
+}
+
+.note{
+margin-top:20px;
+padding:18px 20px;
+border-radius:18px;
+background:linear-gradient(
+135deg,
+var(--pink-soft),
+var(--blue-soft)
+);
+border:1px solid rgba(160,170,180,.2);
+text-align:center;
+color:#59636d;
+}
+
+.quote{
+text-align:center;
+margin:10px auto 35px;
+max-width:750px;
+padding:26px 25px;
+border-left:3px solid var(--pink);
+border-right:3px solid var(--blue);
+background:rgba(255,255,255,.65);
+border-radius:16px;
+font-style:italic;
+color:#5a626b;
+}
+
+.custom-section{
+padding-top:5px;
+}
+
+.custom-card{
+max-width:700px;
+margin:0 auto;
+}
+
+footer{
+margin-top:15px;
+padding:42px 0 35px;
+background:linear-gradient(
+135deg,
+#f8e9ec,
+#edf5fa
+);
+text-align:center;
+border-top:1px solid var(--line);
+}
+
+footer .made{
+font-size:1.05rem;
+margin:0 0 8px;
+}
+
+footer .credit{
+margin:0 0 6px;
+color:#727b84;
+font-size:.86rem;
+}
+
+.small-cross{
+color:#8ea3b4;
+font-family:Arial,sans-serif;
+font-size:22px;
+margin-bottom:8px;
+}
+
+.visit-counter{
+margin-top:18px !important;
+padding-top:15px;
+border-top:1px solid rgba(120,130,140,.18);
+font-family:Arial,sans-serif;
+font-size:.86rem !important;
+color:#66717b !important;
+}
+
+.visit-counter strong{
+color:var(--ink);
+}
+
+@media (max-width:700px){
+
+header{
+padding:35px 0 25px;
+}
+
+.wrap{
+width:min(100% - 22px, 1100px);
+}
+
+.grid{
+grid-template-columns:1fr;
+gap:14px;
+}
+
+.intro{
+padding:24px 18px;
+margin-bottom:30px;
+}
+
+.card{
+padding:18px;
+min-height:185px;
+}
+
+.section-heading h2{
+font-size:1.55rem;
+}
+
+.subtitle{
+font-size:1rem;
+}
+
+nav a{
+font-size:.82rem;
+padding:7px 12px;
+}
+
+.quote{
+font-size:.95rem;
+}
+}
+</style>
 </head>
 
 <body>
 
 <header id="top">
-  <div class="wrap">
-    <div class="cross" aria-hidden="true">✝</div>
+<div class="wrap">
 
-    <h1>Bible Reading Tracker - Free Printables</h1>
+<div class="cross" aria-hidden="true">✝</div>
 
-    <div class="ornament" aria-hidden="true"></div>
+<h1>Bible Reading Tracker - Free Printables</h1>
 
-    <p class="subtitle">
-      Thoughtfully designed Bible reading trackers and printables in English and Tamil,
-      made to encourage time spent in God's Word.
-    </p>
+<div class="ornament" aria-hidden="true"></div>
 
-    <nav aria-label="Main navigation">
-      <a href="#english">English</a>
-      <a href="#tamil">தமிழ்</a>
-      <a href="#books">Book Reading</a>
-      <a href="#about">About</a>
-    </nav>
-  </div>
+<p class="subtitle">
+Beautiful, thoughtfully designed Bible reading trackers and printables
+in English and Tamil. Free to print, use and share.
+</p>
+
+<nav aria-label="Main navigation">
+<a href="#english">English</a>
+<a href="#tamil">Tamil</a>
+<a href="#custom">Book Reading Tracker</a>
+<a href="#about">About</a>
+</nav>
+
+</div>
 </header>
+
 
 <main class="wrap">
 
-  <section class="intro" id="about">
-    <h2>About these printables</h2>
-
-    <p>
-      I created these Bible trackers to make keeping track of Bible reading
-      simple, beautiful, and enjoyable.
-    </p>
-
-    <p>
-      Each design has been thoughtfully illustrated with plants and flowers inspired by Scripture and includes the potted plants of Fig, Grapevine, Lily, Rose of Sharon, Olive, Passion flower and Palm. The Monstera is added for visual appeal.
-    </p>
-
-    <p>
-      Similarly, spaces have been provided for you to add your favourite things. It can be a photo frame, globe or your action figures.
-    </p>
-
-    <p>
-      Just colour them as you finish each book and finally you can get a colourful tracker which proudly showcases your commitment to God's Word. The tracker can be used monthly or yearly, or however you wish.
-    </p>
-
-    <p>
-      As a creator, I love having the flexibility and designed it as such.
-    </p>
-
-    <p>
-      Do mention me when you post on social media so that I can happily enjoy your renditions.
-    </p>
-  </section>
-
-
-  <!-- ENGLISH BIBLE TRACKERS -->
-
-  <section id="english">
-    <div class="section-heading">
-      <h2>English Bible Trackers</h2>
-      <p>Choose the design you love.</p>
-    </div>
-
-    <div class="grid">
-
-      <article class="card">
-        <img class="preview"
-             src="bookshelfwithbooks1-preview.png"
-             alt="Bible Bookshelf tracker preview">
-
-        <h3>Bible Bookshelf</h3>
-        <p>A simple bookshelf tracker for reading through the books of the Bible.</p>
-
-        <a class="button"
-           href="bookshelfwithbooks.pdf"
-           target="_blank"
-           rel="noopener">View PDF</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="bookshelfwithbooksPhotoandcommandment1-preview.png"
-             alt="Bible Bookshelf with Commandments preview">
-
-        <h3>Bible Bookshelf + Commandments</h3>
-        <p>A bookshelf tracker with the Ten Commandments.</p>
-
-        <a class="button"
-           href="bookshelfwithbooksPhotoandcommandment.pdf"
-           target="_blank"
-           rel="noopener">View PDF</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="bookshelfwithbooksPhotoframe1-preview.png"
-             alt="Bible Bookshelf with Photo Frame preview">
-
-        <h3>Bible Bookshelf + Photo Frame</h3>
-        <p>A decorative bookshelf design with a photo-frame element.</p>
-
-        <a class="button"
-           href="bookshelfwithbooksPhotoframe.pdf"
-           target="_blank"
-           rel="noopener">View PDF</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="bookshelfwithbooksPhotoverseandcommandment1-preview.png"
-             alt="Bible Bookshelf with Verse and Commandments preview">
-
-        <h3>Bible Bookshelf + Verse &amp; Commandments</h3>
-        <p>A bookshelf design featuring a Bible verse and the Ten Commandments.</p>
-
-        <a class="button"
-           href="bookshelfwithbooksPhotoverseandcommandment.pdf"
-           target="_blank"
-           rel="noopener">View PDF</a>
-      </article>
-
-    </div>
-  </section>
-
-
-  <!-- TAMIL BIBLE TRACKERS -->
-
-  <section id="tamil">
-    <div class="section-heading">
-      <h2>தமிழ் Bible Trackers</h2>
-      <p>தமிழ் வேதாகம வாசிப்பு டிராக்கர்கள்</p>
-    </div>
-
-    <div class="tamil-intro">
-      <strong>The first Tamil printable Bible tracker, created especially for my dear Tamil people.</strong>
-      <br>
-      Free printables to encourage Bible reading in Tamil.
-    </div>
-
-    <div class="grid">
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooks1-preview.png"
-             alt="Tamil Bible Bookshelf tracker preview">
-
-        <h3>தமிழ் வேதாகம புத்தக அலமாரி</h3>
-        <p>தமிழில் வேதாகமத்தின் புத்தகங்களை வாசித்து குறிக்க உதவும் tracker.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooks.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooksPhotoandcommandment1-preview.png"
-             alt="Tamil Bible Bookshelf with Commandments preview">
-
-        <h3>தமிழ் Bookshelf + Commandments</h3>
-        <p>வேதாகம புத்தகங்களுடன் பத்து கட்டளைகளையும் கொண்ட வடிவம்.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooksPhotoandcommandment.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooksPhotoframebookname-added1-preview.png"
-             alt="Tamil Bible Bookshelf Photo Frame preview">
-
-        <h3>தமிழ் Bookshelf + Photo Frame</h3>
-        <p>புத்தகப் பெயருடன் photo-frame வடிவமைப்பு.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooksPhotoframebookname%20added.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooksPhotoframewithcommandmenttamil-preview.png"
-             alt="Tamil Bible Bookshelf Photo Frame with Commandments preview">
-
-        <h3>தமிழ் Bookshelf + Photo Frame + Commandments</h3>
-        <p>Photo-frame வடிவத்துடன் பத்து கட்டளைகளும் கொண்ட பதிப்பு.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooksPhotoframewithcommandmenttamil.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooksPhotoverseandcommandment1-preview.png"
-             alt="Tamil Bible Bookshelf Verse and Commandments preview">
-
-        <h3>தமிழ் Bookshelf + Verse &amp; Commandments</h3>
-        <p>வேதாகம வசனம் மற்றும் பத்து கட்டளைகளுடன் கூடிய பதிப்பு.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooksPhotoverseandcommandment.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooksPhotoverseandcommandmenttamil-preview.png"
-             alt="Tamil Bible Bookshelf Verse and Commandments Tamil preview">
-
-        <h3>தமிழ் Bookshelf + Verse &amp; Commandments</h3>
-        <p>தமிழ் வடிவில் வசனம் மற்றும் கட்டளைகளுடன் கூடிய பதிப்பு.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooksPhotoverseandcommandmenttamil.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-
-      <article class="card">
-        <img class="preview"
-             src="tamilbookshelfwithbooksPhotoverseandcommandmenttamilfinal1-preview.png"
-             alt="Final Tamil Bible Bookshelf Verse and Commandments preview">
-
-        <h3>தமிழ் Bookshelf + Verse &amp; Commandments - Final</h3>
-        <p>வசனம், தாவர அலங்காரம் மற்றும் பத்து கட்டளைகளுடன் கூடிய இறுதி வடிவம்.</p>
-
-        <a class="button"
-           href="tamilbookshelfwithbooksPhotoverseandcommandmenttamilfinal.pdf"
-           target="_blank"
-           rel="noopener">PDF பார்க்க</a>
-      </article>
-
-    </div>
-  </section>
-
-
-  <!-- BOOK READING TRACKER -->
-
-  <section id="books" class="book-section">
-
-    <div class="section-heading">
-      <h2>Book Reading Trackers</h2>
-      <p>For the books in your own reading journey.</p>
-    </div>
-
-    <article class="card book-card">
-
-      <img class="preview"
-           src="bookshelfwithbookscustom1-preview.png"
-           alt="My Reading Bookshelf custom book tracker preview">
-
-      <h3>My Reading Bookshelf</h3>
-
-      <p>
-        A customizable bookshelf where you can write your own book names.
-        Use it for the books you are reading or for other books in your personal library.
-      </p>
-
-      <a class="button"
-         href="bookshelfwithbookscustom.pdf"
-         target="_blank"
-         rel="noopener">View PDF</a>
-
-    </article>
-
-  </section>
-
-
-  <div class="quote">
-    “If I cannot do great things, I can do small things in a great way.”
-    <br>
-    <span>— Dr. Martin Luther King Jr.</span>
-  </div>
+<!-- ABOUT -->
+<section class="intro" id="about">
+
+<h2>About these printables</h2>
+
+<p>
+I created these Bible trackers to make keeping track of Bible reading
+simple, beautiful, and enjoyable.
+</p>
+
+<p>
+Each design has been thoughtfully illustrated with plants and flowers
+inspired by Scripture and includes the potted plants of
+<strong>Fig, Grapevine, Lily, Rose of Sharon, Olive, Passion flower and Palm.</strong>
+The monstera is added for visual appeal.
+</p>
+
+<p>
+Similarly, spaces have been provided for you to add your favourite things.
+It can be a photo frame, globe or your action figures.
+</p>
+
+<p>
+Just color them as you finish each book and finally you can get a
+colorful tracker which proudly showcases your commitment to God's Word.
+The tracker can be used monthly or yearly or however you wish.
+</p>
+
+<p>
+As a creator, I love having the flexibility and designed it as such.
+</p>
+
+<p>
+Do mention me when you post in your social media so that I can happily
+enjoy your renditions.
+</p>
+
+<span class="highlight">
+First Tamil printable Bible tracker collection for my dear Tamil people
+</span>
+
+</section>
+
+
+<!-- ENGLISH -->
+<section id="english">
+
+<div class="section-heading">
+<h2>English Bible Trackers</h2>
+<p>Choose the design you love.</p>
+</div>
+
+<div class="grid">
+
+<article class="card">
+<div class="card-top">
+<div class="icon">📖</div>
+<div>
+<h3>Bible Bookshelf</h3>
+<p>
+Colour or mark the books of the Bible as you read through them.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="bookshelfwithbooks.pdf"
+target="_blank"
+rel="noopener"
+>
+View PDF
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">✝</div>
+<div>
+<h3>Bible Bookshelf + Commandments</h3>
+<p>
+A bookshelf tracker accompanied by the Ten Commandments.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="bookshelfwithbooksPhotoandcommandment.pdf"
+target="_blank"
+rel="noopener"
+>
+View PDF
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">🌿</div>
+<div>
+<h3>Bible Bookshelf + Floral Frame</h3>
+<p>
+A decorative version with a gentle botanical touch.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="bookshelfwithbooksPhotoframe.pdf"
+target="_blank"
+rel="noopener"
+>
+View PDF
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">♡</div>
+<div>
+<h3>Bible Bookshelf + Verse & Commandments</h3>
+<p>
+Includes a Scripture verse and the Ten Commandments.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="bookshelfwithbooksPhotoverseandcommandment.pdf"
+target="_blank"
+rel="noopener"
+>
+View PDF
+</a>
+</article>
+
+</div>
+
+</section>
+
+
+<!-- TAMIL -->
+<section id="tamil">
+
+<div class="section-heading">
+<h2>Tamil Bible Trackers</h2>
+<p>தமிழ் வேதாகம வாசிப்பு டிராக்கர்கள்</p>
+</div>
+
+<div class="grid">
+
+<article class="card">
+<div class="card-top">
+<div class="icon">அ</div>
+<div>
+<h3>தமிழ் வேதாகம புத்தக அலமாரி</h3>
+<p>
+தமிழில் வேதாகமத்தின் புத்தகங்களை வாசித்து குறிக்க உதவும்
+இலவச printable.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="tamilbookshelfwithbooks.pdf"
+target="_blank"
+rel="noopener"
+>
+PDF பார்க்க
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">✝</div>
+<div>
+<h3>தமிழ் புத்தக அலமாரி + கட்டளைகள்</h3>
+<p>
+வேதாகம புத்தகங்களுடன் பத்து கட்டளைகளையும் கொண்ட வடிவம்.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="tamilbookshelfwithbooksPhotoandcommandment.pdf"
+target="_blank"
+rel="noopener"
+>
+PDF பார்க்க
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">🌿</div>
+<div>
+<h3>தமிழ் புத்தக அலமாரி + Floral Frame</h3>
+<p>
+மலர் அலங்காரத்துடன் கூடிய அழகான பதிப்பு.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="tamilbookshelfwithbooksPhotoframebookname added.pdf"
+target="_blank"
+rel="noopener"
+>
+PDF பார்க்க
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">✎</div>
+<div>
+<h3>தமிழ் Custom Bookshelf</h3>
+<p>
+உங்கள் சொந்த புத்தகப் பெயர்களை எழுதிக்கொள்ளும் பதிப்பு.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="tamilbookshelfwithbooksPhotoframewithcommandmenttamil.pdf"
+target="_blank"
+rel="noopener"
+>
+PDF பார்க்க
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">♡</div>
+<div>
+<h3>தமிழ் Bookshelf + Verse</h3>
+<p>
+வேதாகம வசனம் மற்றும் கட்டளைகளுடன் கூடிய பதிப்பு.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="tamilbookshelfwithbooksPhotoverseandcommandmenttamil.pdf"
+target="_blank"
+rel="noopener"
+>
+PDF பார்க்க
+</a>
+</article>
+
+
+<article class="card">
+<div class="card-top">
+<div class="icon">✿</div>
+<div>
+<h3>தமிழ் Bookshelf + Verse & Commandments</h3>
+<p>
+வசனம், தாவர அலங்காரம் மற்றும் பத்து கட்டளைகளுடன் கூடிய
+விரிவான வடிவம்.
+</p>
+</div>
+</div>
+
+<a
+class="button"
+href="tamilbookshelfwithbooksPhotoverseandcommandmenttamilfinal.pdf"
+target="_blank"
+rel="noopener"
+>
+PDF பார்க்க
+</a>
+</article>
+
+</div>
+
+<div class="note">
+<strong>தமிழ் வேதாகம வாசிப்புக்காக உருவாக்கப்பட்டது</strong><br>
+பல்வேறு வடிவங்களில் இலவசமாக பதிவிறக்கம் செய்து அச்சிட்டு பயன்படுத்தலாம்.
+</div>
+
+</section>
+
+
+<!-- CUSTOM BOOK READING TRACKER -->
+<section id="custom" class="custom-section">
+
+<div class="section-heading">
+<h2>Book Reading Tracker</h2>
+<p>For the books you love beyond the Bible.</p>
+</div>
+
+<div class="card custom-card">
+
+<div class="card-top">
+
+<div class="icon">📚</div>
+
+<div>
+<h3>My Reading Bookshelf</h3>
+
+<p>
+A custom bookshelf tracker where you can write your own book
+names and colour them as you finish reading.
+</p>
+</div>
+
+</div>
+
+<a
+class="button"
+href="bookshelfwithbookscustom.pdf"
+target="_blank"
+rel="noopener"
+>
+View PDF
+</a>
+
+</div>
+
+</section>
+
+
+<!-- QUOTE -->
+<div class="quote">
+
+“If I cannot do great things, I can do small things in a great way.”
+
+<br>
+
+<span>— Dr. Martin Luther King Jr.</span>
+
+</div>
 
 </main>
 
 
+<!-- FOOTER -->
 <footer>
-  <div class="small-cross">✝</div>
 
-  <p class="made">
-    Made with love from <strong>Gladlin Shirley G</strong>
-  </p>
+<div class="small-cross">✝</div>
 
-  <p class="credit">
-    For the encouragement of Bible reading, especially among children and young people.
-  </p>
+<p class="made">
+Made with love from <strong>Gladlin Shirley G</strong>
+</p>
 
-  <p class="credit">
-    Praise be to the Lord Jesus Christ.
-  </p>
+<p class="credit">
+For the encouragement of Bible reading, especially among children and young people.
+</p>
+
+<p class="credit">
+Praise be to the Lord Jesus Christ.
+</p>
+
+<!-- TOTAL VISITS -->
+<p class="credit visit-counter">
+Total visits: <strong id="visit-count">Loading...</strong>
+</p>
+
 </footer>
+
+
+<!-- VISITOR COUNTER -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+const counter = new Counter({
+workspace: "g-ss-team"
+});
+
+counter.up("visits")
+.then(function (result) {
+document.getElementById("visit-count").textContent = result.value;
+})
+.catch(function (error) {
+console.error("Visit counter error:", error);
+document.getElementById("visit-count").textContent = "—";
+});
+
+});
+</script>
 
 </body>
 </html>
