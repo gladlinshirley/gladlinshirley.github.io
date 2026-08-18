@@ -671,9 +671,37 @@
   </p>
 
   <p class="credit">
-    Praise be to the Lord Jesus Christ.
+    Praise be to our Lord Jesus Christ.
+  </p>
+
+  <p class="credit" id="visit-counter">
+    Total visits: <span id="visit-count">Loading...</span>
   </p>
 </footer>
+
+
+<script type="module">
+  import { Counter } from "https://cdn.jsdelivr.net/npm/counterapi/dist/counter.esm.min.js";
+
+  const visitCount = document.getElementById("visit-count");
+
+  async function recordVisit() {
+    try {
+      const counter = new Counter({
+        workspace: "g-ss-team",
+        timeout: 10000
+      });
+
+      const result = await counter.up("visits");
+      visitCount.textContent = result.value;
+    } catch (error) {
+      console.error("CounterAPI visit counter error:", error);
+      visitCount.textContent = "Unavailable";
+    }
+  }
+
+  recordVisit();
+</script>
 
 </body>
 </html>
