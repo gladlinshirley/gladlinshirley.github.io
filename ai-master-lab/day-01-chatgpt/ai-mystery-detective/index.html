@@ -1,1 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Case of the Vanishing Hour</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="game-header">
+    <div><p class="eyebrow">Ashbourne Railway Museum</p><h1>The Case of the Vanishing Hour</h1></div>
+    <div class="stats"><span>Evidence <strong id="evidence-count">0 / 0</strong></span><span>Score <strong id="score">0</strong></span></div>
+  </header>
+  <main class="game-layout">
+    <section class="main-panel">
+      <div class="location-header"><div><p class="eyebrow">Current location</p><h2 id="location-title"></h2></div><button id="case-file-btn" class="secondary-btn">Case File</button></div>
+      <div id="scene-description" class="scene-description"></div>
+      <section><h3>Investigate</h3><div id="object-list" class="object-grid"></div></section>
+      <section class="characters-section"><h3>Interview</h3><div id="character-list" class="character-grid"></div></section>
+    </section>
+    <aside class="sidebar">
+      <section class="sidebar-section"><h3>Locations</h3><div id="location-list"></div></section>
+      <section class="sidebar-section"><h3>Evidence Board</h3><div id="evidence-board" class="evidence-board"></div></section>
+      <section class="sidebar-section"><h3>Current lead</h3><p id="lead-text" class="lead-text"></p></section>
+    </aside>
+  </main>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><button class="modal-close" data-close="modal" aria-label="Close">×</button><p id="modal-category" class="eyebrow"></p><h2 id="modal-title"></h2><div id="modal-content"></div><div id="modal-actions"></div></div></div>
+  <div id="case-file-modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><button class="modal-close" data-close="case-file-modal" aria-label="Close">×</button><p class="eyebrow">Case file #27</p><h2>The Missing Night Express Clock</h2><div id="case-file-content"></div></div></div>
+  <div id="accusation-modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><button class="modal-close" data-close="accusation-modal" aria-label="Close">×</button><p class="eyebrow">Final deduction</p><h2>Reconstruct the crimes</h2><p>Identify both crimes, Agatha's motive, and the original clock's hiding place.</p><form id="accusation-form" class="accusation-form">
+    <fieldset><legend>Crime 1</legend><label>Who?<select id="crime1-person"><option value="">Choose…</option><option value="agatha">Agatha</option><option value="canon">Canon</option><option value="emily">Emily</option></select></label><label>What was stolen?<select id="crime1-object"><option value="">Choose…</option><option value="original">Genuine Night Express Clock</option><option value="replica">Replica</option></select></label><label>When?<select id="crime1-time"><option value="">Choose…</option><option value="843">8:43 PM</option><option value="912">9:12 PM</option><option value="917">9:17 PM</option></select></label></fieldset>
+    <fieldset><legend>Crime 2</legend><label>Who?<select id="crime2-person"><option value="">Choose…</option><option value="agatha">Agatha</option><option value="canon">Canon</option><option value="emily">Emily</option></select></label><label>What was stolen?<select id="crime2-object"><option value="">Choose…</option><option value="original">Genuine Night Express Clock</option><option value="replica">Replica</option></select></label><label>When?<select id="crime2-time"><option value="">Choose…</option><option value="843">8:43 PM</option><option value="912">9:12 PM</option><option value="917">9:17 PM</option></select></label></fieldset>
+    <fieldset><legend>Agatha</legend><label>Motive?<select id="motive"><option value="">Choose…</option><option value="revenge">Revenge</option><option value="sale">Financial gain through private sale</option><option value="protect">Protecting Emily</option></select></label><label>Where was the genuine clock hidden?<select id="hiding-place"><option value="">Choose…</option><option value="security">Security desk</option><option value="workshop">Conservation workshop</option><option value="locker">Stationmaster's luggage locker</option><option value="office">Agatha's office</option></select></label></fieldset>
+    <button class="primary-btn" type="submit">Submit Final Accusation</button>
+  </form></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
 
