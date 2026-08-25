@@ -132,7 +132,7 @@ const dialogue = {
 function interview(id) {
   if (id === "canon" && gameState.canonIdentified && !gameState.canonAdmits) {
     gameState.canonAdmits = true; addEvidence("canon-admission");
-    return showModal("Admission", "Canon Breaks", `<p>"Yes. I took it at 9:12. I thought it was the genuine Night Express Clock. I hid it in the old luggage trolley until I could get it out."</p><div class="warning">New lead: recover Canon's stolen clock from the staff corridor.</div>`);
+    return showModal("Admission", "Canon Breaks", `<p>"Yes. I took it at 9:12. I hid it in the old luggage trolley until I could get it out."</p><div class="warning">New lead: recover Canon's stolen clock from the staff corridor.</div>`);
   }
   const index = Math.min(gameState.interviews[id], dialogue[id].length - 1);
   gameState.interviews[id] += 1;
