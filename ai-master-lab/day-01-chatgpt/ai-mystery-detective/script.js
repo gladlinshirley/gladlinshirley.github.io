@@ -84,7 +84,7 @@ function examineObject(id) {
     "display-case": () => clue("case-condition", "The lock is intact. The case was opened carefully, not forced."),
     "security-panel": () => clue("security-log", "The log is clear: two authorised openings, at 8:43 PM and 9:12 PM."),
     cctv: () => { addEvidence("cctv-agatha"); addEvidence("cctv-canon"); showModal("CCTV", "Two Separate Visits", `<p class="clue-text">8:43 PM — Agatha crosses the office with a small transport case.\n\n9:12 PM — Canon approaches the display case alone.</p>`); },
-    "agatha-desk": () => showModal("Investigation", "Agatha's Desk", gameState.genuineClockFound ? "A labelled folder catches your eye: correspondence with Arthur Bell." : "Nothing here establishes why the original clock was removed. Follow the evidence first."),
+    "agatha-desk": () => showModal("Investigation", "Agatha's Desk", gameState.genuineClockFound ? "A labelled folder catches your eye: correspondence with Arthur Bell." : "Nothing here establishes why the clock was stolen."),
     catalogue: () => clue("museum-serial", "The catalogue identifies the genuine clock as NE-1927-B."),
     "archival-photo": () => clue("museum-serial", "The enlarged photograph confirms the catalogue entry: the original's serial was NE-1927-B."),
     "hall-clock": () => clue("stopped-clock", "The 9:17 stop is a red herring: Canon knocked it while moving the trolley."),
@@ -142,7 +142,7 @@ function interview(id) {
 }
 
 function leadText() {
-  if (!gameState.canonIdentified) return "Establish who used the second case opening at 9:12 PM.";
+  if (!gameState.canonIdentified) return "Find out how the locked display case was opened.";
   if (!gameState.canonAdmits) return "Confront Canon with the security log, CCTV, and key record.";
   if (!gameState.canonClockRecovered) return "Recover Canon's stolen clock from the old luggage trolley.";
   if (!gameState.serialInspected) return "Examine the recovered clock's mechanism.";
@@ -159,9 +159,9 @@ function renderLocation() {
   $("location-list").innerHTML = Object.entries(locations).map(([id, l]) => `<button class="location-button ${id === gameState.location ? "active" : ""}" data-location="${id}">${l.name}</button>`).join("");
   document.querySelectorAll("[data-location]").forEach((button) => button.addEventListener("click", () => { gameState.location = button.dataset.location; renderAll(); }));
 }
-function renderObjects() { objectList.innerHTML = getObjects().map(([id, title, detail]) => `<button class="card ${objectDone(id) ? "done" : ""}" data-object="${id}"><strong>${title}</strong><span>${detail}</span></button>`).join(""); document.querySelectorAll("[data-object]").forEach((button) => button.addEventListener("click", () => examineObject(button.dataset.object))); }
+function renderObjects() { objectList.innerHTML = getObjects().map(([id, title, detail]) => `<button class="card object-card ${objectDone(id) ? "done" : ""}" data-object="${id}"><strong>${title}</strong><span>${detail}</span></button>`).join(""); document.querySelectorAll("[data-object]").forEach((button) => button.addEventListener("click", () => examineObject(button.dataset.object))); }
 function objectDone(id) { const map = {"display-case":"case-condition","security-panel":"security-log",cctv:"cctv-canon",catalogue:"museum-serial","archival-photo":"museum-serial","hall-clock":"stopped-clock","restoration-log":"emily-alibi","key-log":"key-log","luggage-trolley":"recovered-clock","luggage-locker":"genuine-clock","collector-letter":"collector-letter"}; return Boolean(map[id] && gameState.evidence.has(map[id])); }
-function renderCharacters() { const people = [["agatha","Agatha","Museum curator"],["canon","Canon","Night guard"],["emily","Emily","Conservator"]]; characterList.innerHTML = people.map(([id,n,r]) => `<button class="card" data-person="${id}"><strong>${n}</strong><span>${r}</span></button>`).join(""); document.querySelectorAll("[data-person]").forEach((button) => button.addEventListener("click", () => interview(button.dataset.person))); }
+function renderCharacters() { const people = [["agatha","Agatha","Museum curator"],["canon","Canon","Night guard"],["emily","Emily","Conservator"]]; characterList.innerHTML = people.map(([id,n,r]) => `<button class="card interview-card" data-person="${id}"><strong>${n}</strong><span>${r}</span></button>`).join(""); document.querySelectorAll("[data-person]").forEach((button) => button.addEventListener("click", () => interview(button.dataset.person))); }
 function renderEvidence() { $("evidence-count").textContent = `${gameState.evidence.size} / ${Object.keys(EVIDENCE).length}`; $("evidence-board").innerHTML = gameState.evidence.size ? [...gameState.evidence].map((id) => `<button class="evidence-item" data-evidence="${id}"><small>${EVIDENCE[id].category}</small>${EVIDENCE[id].title}</button>`).join("") : "<p class='lead-text'>No evidence collected.</p>"; document.querySelectorAll("[data-evidence]").forEach((button) => button.addEventListener("click", () => { const e = EVIDENCE[button.dataset.evidence]; showModal(e.category, e.title, `<p class="clue-text">${e.text}</p>`); })); }
 
 function showModal(category, title, content, actions = []) { $("modal-category").textContent = category; $("modal-title").textContent = title; $("modal-content").innerHTML = content; $("modal-actions").innerHTML = actions.length ? `<div class="action-row">${actions.map((a, i) => `<button class="primary-btn" data-action="${i}">${a.label}</button>`).join("")}</div>` : ""; actions.forEach((a, i) => { const button = document.querySelector(`[data-action="${i}"]`); if (button) button.addEventListener("click", a.action); }); modal.classList.remove("hidden"); }
@@ -175,4 +175,3 @@ $("case-file-btn").addEventListener("click", openCaseFile);
 $("accusation-form").addEventListener("submit", submitAccusation);
 document.querySelectorAll("[data-close]").forEach((button) => button.addEventListener("click", () => closeModal(button.dataset.close)));
 renderAll();
-
