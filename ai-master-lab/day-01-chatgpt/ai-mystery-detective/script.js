@@ -10,7 +10,7 @@ const EVIDENCE = {
   "museum-serial": { category: "Museum record", title: "Catalogue Serial: NE-1927-B", text: "The museum catalogue and archival photograph identify the genuine Night Express Clock as NE-1927-B." },
   "stopped-clock": { category: "Red herring", title: "Hall Clock Stopped at 9:17", text: "The hall clock stopped when Canon moved a trolley. It does not record either case opening." },
   "emily-alibi": { category: "Statement", title: "Emily's Restoration Log", text: "Emily was documenting restoration work in the exhibition hall during both recorded case openings." },
-  "canon-admission": { category: "Admission", title: "Canon Admits Theft", text: "Canon admits opening the case at 9:12 PM and stealing the clock, believing it was genuine." },
+  "canon-admission": { category: "Admission", title: "Canon Admits Theft", text: "Canon admits opening the case at 9:12 PM and stealing the clock" },
   "recovered-clock": { category: "Recovered object", title: "Canon's Recovered Clock", text: "Canon hid the clock inside the old luggage trolley in the staff corridor." },
   "replica-serial": { category: "Physical evidence", title: "Recovered Serial: NE-1927-A", text: "The clock Canon stole bears serial number NE-1927-A." },
   "locker-trace": { category: "Physical evidence", title: "Disturbed Luggage Locker", text: "The stationmaster's locker has fresh scratches and a strip of velvet matching the display case lining." },
